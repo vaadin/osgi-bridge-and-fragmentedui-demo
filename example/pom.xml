@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<vaadin.version>7.3.3</vaadin.version>
+		<vaadin.version>7.3.5</vaadin.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -133,7 +133,7 @@
 							*,VAADIN;version="${vaadin.version}",VAADIN.widgetsets;version="${vaadin.version}",VAADIN.widgetsets.co
 							m.vaadin.DefaultWidgetSet;version="${vaadin.version}",VAADIN.widgetsets.com.vaadi
 							n.DefaultWidgetSet.deferredjs;version="${vaadin.version}",VAADIN.widgetsets.com.v
-							aadin.DefaultWidgetSet.deferredjs.B2C72F73DB3F8F6056D8F28C08314ED6;ve
+							aadin.DefaultWidgetSet.deferredjs.D79FEF925099E143C6D79765FF625E6E;ve
 							rsion="${vaadin.version}",VAADIN.themes;version="${vaadin.version}",VAADIN.themes.base;versi
 							on="${vaadin.version}",VAADIN.themes.base.absolutelayout;version="${vaadin.version}",VAADIN.t
 							hemes.base.accordion;version="${vaadin.version}",VAADIN.themes.base.browserframe;

@@ -9,7 +9,7 @@ This is only a proof of concept. In particular the demo doesn't show any best pr
 ## Setup ##
 What you need to run the demo:
 0. Use latest Java 1.8 from Oracle
-1. Download and install latest Karaf 4.x (at the moment this is 4.0.0.M1)
+1. [Download](http://karaf.apache.org/index/community/download.html) and install latest Karaf 4.x (at the moment this is 4.0.0.M1)
 2. (Optional, but recomended) For convenience, install `webconsole` feature in Karaf:
         # }> cd $KARAF_HOME
         # }> bin/karaf
@@ -24,16 +24,24 @@ This will ease deployment of OSGi bundles to Karaf
   * Support for simple HTTP
   * Support for WAR files and Web Application Bundles
 
-4. Deploy **patched** Vaadin core bundles.
+4. Deploy Vaadin core bundles.
 
-  As Vaadin at the moment is distributed as a set of JAR files, we need to first gather them all, to be able to deploy all of them on Karaf as OSGi bundles. Also, as of version 7.3.3 vaadin-shared.jar need patching `MANIFEST.MF` because of faulty `Import-Package` statement. This will be fixed in 7.3.4 (see http://dev.vaadin.com/ticket/14618)
-  1. Getting all jars  
-    My way was to create a completely new maven project based on Vaadin archetype build it, and find all the Vaadin bundles in `WEB-INF/lib` of resulting web application. I copied those jars to a temporary folder
+  1. Getting Vaadin
+    [Download vaadin-all-7.x.x.zip](https://vaadin.com/download) (use 7.3.5 or newer).
 
-  2. Patching OSGi manifests  
-    You need to patch META-INF/MANIFEST.MF files in vaadin-server and vaadin-shared bundles. Look for `Import-Package` statement and in this statement change `org.json;version="0.0.20131108.vaadin1"` to `org.json;version="0.0.20080701"`. Do this for both vaadin-server and vaadin-shared. Also, put the patched files to your local maven repository, so the build process can see the correct import statements.
+  2. Deploy Vaadin to Karaf.
 
-  3. Deploy Vaadin bundles to Karaf.  
+    You will want to deploy the following bundles:
+    * vaadin-client-compiled-7.3.5.jar
+    * vaadin-server-7.3.5.jar
+    * vaadin-shared-7.3.5.jar 
+    * vaadin-themes-7.3.5.jar
+    * lib/jsoup-1.6.3.jar
+    * lib/json-0.0.20080701.jar
+    * lib/guava-16.0.1.vaadin1.jar
+    * lib/streamhtmlparser-jsilver-0.0.10.vaadin1.jar
+    * lib/flute-1.3.0.gg2.jar
+
     This can be done in two ways (and is not specific to Vaadin bundles, all the bundles can be deployed in those two ways described here):
     * copy Vaadin bundles to `$KARAF_HOME\deploy`. Karaf will hot-deploy dropped files
 
@@ -58,7 +66,7 @@ This will ease deployment of OSGi bundles to Karaf
 
   Package is enough to get a deployable bundle
 
-  Then deploy both example and uifragment1 bundles on Karaf.  
+  Then deploy both uifragment1/target/uifragment1-0.0.1.jar and example/target/example-0.0.1.war to Karaf in the same way as described above. 
   Finally, you can start the demo. First, start example bundle (click on play button in bundle listing in web console, or use `start` command in terminal console). Open the web browser and go to http://localhost:8181/vaadin-osgi. You will see the main application window. On the left side there's navigation bar, initially empty. When you start `uifragment1` bundle a button will appear in this navigation bar. After clicking on that button, a view contributed by uiframgent1 will be displayed in the larger part of the application window. Stopping the `uifragment1` bundle will remove the view and button.
 
 ## Things known to be broken ##
