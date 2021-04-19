@@ -7,7 +7,7 @@
 	<packaging>bundle</packaging>
 	<name>UI Module 1</name>
 	<properties>
-		<vaadin.version>7.3.5</vaadin.version>
+		<vaadin.version>7.7.24</vaadin.version>
 	</properties>
 
 	<dependencies>
